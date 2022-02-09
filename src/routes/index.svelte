@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+
+import { parse_molecular_formular } from "$lib/chemistry/molecular_formular/parser";
+
+</script>
+
+{JSON.stringify(parse_molecular_formular('A2h8f'))}

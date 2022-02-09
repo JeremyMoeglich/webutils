@@ -5,6 +5,7 @@ specifiers:
   '@sveltejs/kit': next
   '@typescript-eslint/eslint-plugin': ^5.10.1
   '@typescript-eslint/parser': ^5.10.1
+  deno_ls_plugin: ^0.1.0
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.1
@@ -15,6 +16,9 @@ specifiers:
   svelte-preprocess: ^4.9.4
   tslib: ^2.3.1
   typescript: ^4.4.3
+
+dependencies:
+  deno_ls_plugin: 0.1.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.17
@@ -525,6 +529,10 @@ packages:
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
+
+  /deno_ls_plugin/0.1.0:
+    resolution: {integrity: sha512-mUV2q6Alx3p1B21R5yVIc/wmeCcPftz/CcbsY0kbV/djyFRLZU/Gqmn6sqvMCm2zb+suHinPE99QhySIFuz5hw==}
+    dev: false
 
   /detect-indent/6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
