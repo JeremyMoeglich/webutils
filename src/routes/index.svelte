@@ -1,7 +1,7 @@
 <script>
-
-import { parse_molecular_formular } from "$lib/chemistry/molecular_formular/parser";
-
+	import { parse_molecular_formular } from '$lib/chemistry/molecular_formular/parser';
+	let value = '';
 </script>
 
-{JSON.stringify(parse_molecular_formular('A2h8f'))}
+<input type="text" bind:value />
+{JSON.stringify(parse_molecular_formular(value))}

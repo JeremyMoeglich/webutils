@@ -1,6 +1,6 @@
 import type { element } from './types';
 
-const elements: ReadonlyArray<element> = [
+export const elements: ReadonlyArray<element> = [
 	{
 		AtomicNumber: 1,
 		Element: 'Hydrogen',
