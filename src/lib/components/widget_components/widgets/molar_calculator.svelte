@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { calculate_molar_mass } from '$lib/chemistry/molecular_formular/molar_mass';
-	import { parse_molecular_formular } from '$lib/chemistry/molecular_formular/parser';
 	import DraggableBox from '$lib/components/draggable_box.svelte';
+	import InputBox from '$lib/components/input_box.svelte';
+	import type { drop_data } from '$lib/utils/drag';
 
-	let value = '';
-	$: molar_mass = calculate_molar_mass(value);
+	let data: drop_data = { text: '', optional: {} };
+	$: molar_mass = calculate_molar_mass(data.text);
 </script>
 
 <div>
 	<p>
-		Summenformel: <input type="text" bind:value />
+		Summenformel: <InputBox bind:data />
 	</p>
 	<DraggableBox
 		drag_data={{
@@ -21,7 +22,7 @@
 	</DraggableBox>
 	<button
 		on:click={() => {
-			navigator.clipboard.writeText(value);
+			navigator.clipboard.writeText(data.text);
 		}}
 	>
 		Copy

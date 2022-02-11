@@ -23,6 +23,7 @@
 		"prettier-plugin-svelte": "^2.6.0",
 		"svelte": "^3.46.4",
 		"svelte-check": "^2.4.3",
+		"svelte-grid": "^5.1.1",
 		"svelte-preprocess": "^4.10.3",
 		"ts-node": "^10.5.0",
 		"tslib": "^2.3.1",

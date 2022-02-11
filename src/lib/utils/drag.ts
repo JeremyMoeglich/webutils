@@ -11,6 +11,7 @@ export interface drop_data {
 }
 
 export function set_drag_content(event: DragEvent, data: drop_data) {
+	console.log(`Set to ${JSON.stringify(data)}`)
 	event.dataTransfer.setData('text/plain', JSON.stringify(data));
 }
 

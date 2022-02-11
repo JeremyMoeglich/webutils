@@ -6,5 +6,5 @@
 <input
 	type="text"
 	bind:value={data.text}
-	on:dragend={(event) => (data = get_drag_content(event))}
+	on:drop={(event) => (data = get_drag_content(event))}
 />
