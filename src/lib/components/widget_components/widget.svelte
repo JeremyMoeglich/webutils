@@ -4,7 +4,7 @@
 </script>
 
 <div class="alignment">
-    <svelte:component this={child_component} />
+	<svelte:component this={child_component} />
 </div>
 
 <style></style>
