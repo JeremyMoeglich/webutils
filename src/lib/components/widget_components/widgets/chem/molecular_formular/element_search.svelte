@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { search_molecular_form } from '$lib/chemistry/molecular_formular/find_molecular_form';
-	import { parse_molecular_formular } from '$lib/chemistry/molecular_formular/parser';
-	import DraggableBox from '$lib/components/draggable_box.svelte';
+	import { parse_molecular_formular } from './parser';
+	import { search_molecular_form } from './find_molecular_form';
 	import InputBox from '$lib/components/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
-	let data: drop_data = { text: '', optional: {} };
+	import DraggableBox from '$lib/components/draggable_box.svelte';
+
+	let data: drop_data = { text: 'Salzs', optional: {} };
 
 	interface row {
 		left: {
@@ -58,19 +59,21 @@
 	}
 </script>
 
-Element Search: <InputBox bind:data />
-<ul>
-	{#each values as row}
-		<div class="match">
-			<DraggableBox drag_data={row.left.drop_data}>{row.left.text}</DraggableBox>
-			-
-			<DraggableBox drag_data={row.right.drop_data}>{row.right.text}</DraggableBox>
-		</div>
-	{/each}
-</ul>
+<div class="alignment">
+	Element Search: <InputBox bind:data />
+	<div class="results">
+		{#each values as row}
+			<div class="match">
+				<DraggableBox drag_data={row.left.drop_data}>{row.left.text}</DraggableBox>
+				-
+				<DraggableBox drag_data={row.right.drop_data}>{row.right.text}</DraggableBox>
+			</div>
+		{/each}
+	</div>
+</div>
 
 <style lang="scss">
-	ul {
+	.results {
 		display: flex;
 		flex-direction: column;
 		gap: 5px;

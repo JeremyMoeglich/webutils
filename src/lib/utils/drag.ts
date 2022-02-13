@@ -1,4 +1,5 @@
-import type { molecular_formular_type } from '$lib/chemistry/molecular_formular/molecular_formular_type';
+import type { molecular_formular_type } from '$lib/components/widget_components/widgets/chem/molecular_formular/molecular_formular_type';
+import { grid_locked } from '$lib/stores';
 
 interface optional_drow_data {
 	number: number;
@@ -11,11 +12,19 @@ export interface drop_data {
 }
 
 export function set_drag_content(event: DragEvent, data: drop_data) {
-	console.log(`Set to ${JSON.stringify(data)}`)
+	console.log(`Set to ${JSON.stringify(data)}`);
 	event.dataTransfer.setData('text/plain', JSON.stringify(data));
 }
 
 export function get_drag_content(event: DragEvent): drop_data {
 	event.preventDefault();
 	return JSON.parse(event.dataTransfer.getData('text/plain'));
+}
+
+export function lock_grid() {
+	grid_locked.set(true);
+}
+
+export function unlock_grid() {
+	grid_locked.set(false);
 }

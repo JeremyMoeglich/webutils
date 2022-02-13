@@ -1,5 +1,3 @@
-import { intersect } from '$lib/utils/intersect';
-
 export const molecular_forms: ReadonlyArray<Record<'name' | 'molecular_form', string>> = [
 	{ name: 'Amidosulfonsäure', molecular_form: '(NH2)SO3H' },
 	{ name: 'Calciumchlorid', molecular_form: 'CaCl2' },

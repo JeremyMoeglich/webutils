@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { calculate_molar_mass } from '$lib/chemistry/molecular_formular/molar_mass';
+	import { calculate_molar_mass } from './molar_mass';
 	import DraggableBox from '$lib/components/draggable_box.svelte';
 	import InputBox from '$lib/components/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
