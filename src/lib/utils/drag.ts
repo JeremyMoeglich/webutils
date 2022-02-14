@@ -1,11 +1,11 @@
-import type { molecular_formular_type } from '$lib/components/widget_components/widgets/chem/molecular_formular/molecular_formular_type';
-import type { element_mol_attributes } from '$lib/components/widget_components/widgets/chem/molecular_formular/solve_for_mol';
+import type { molecular_formular_type } from '$lib/components/widgets/chem/molecular_formular/molecular_formular_type';
+import type { element_mol_attributes } from '$lib/components/widgets/chem/molecular_formular/solve_for_mol';
 import { grid_locked } from '$lib/stores';
 
 interface optional_drow_data {
 	number: number;
 	molecular_formular: molecular_formular_type;
-	mol_attributes: element_mol_attributes
+	mol_attributes: element_mol_attributes;
 }
 
 export interface drop_data {

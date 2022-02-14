@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { parse_molecular_formular } from './parser';
 	import { search_molecular_form } from './find_molecular_form';
-	import InputBox from '$lib/components/input_box.svelte';
+	import InputBox from '$lib/components/inputs/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
-	import DraggableBox from '$lib/components/draggable_box.svelte';
+	import DraggableBox from '$lib/components/inputs/draggable_box.svelte';
 
 	let data: drop_data = { text: 'Salzs', optional: {} };
 

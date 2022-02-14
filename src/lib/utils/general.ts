@@ -1,10 +1,3 @@
-export function intersect<T = unknown>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): ReadonlyArray<T> {
-	const setA = new Set(a);
-	const setB = new Set(b);
-	const intersection = new Set([...setA].filter((x) => setB.has(x)));
-	return Array.from(intersection);
-}
-
 export function range(arg1: number, arg2: number = undefined): Array<number> {
 	if (!arg2) {
 		arg2 = arg1;
@@ -22,4 +15,22 @@ export function zip<T, A extends Array<Array<T>>>(lsts: A) {
 export function pairs<T>(lst: T[]): [T, T][] {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	return zip([lst.slice(0, -1), lst.slice(1)]) as any;
+}
+
+export function set_empty<T>(
+	obj: Record<string | number | symbol, T>,
+	key: symbol | number | string,
+	value: T
+) {
+	if (value) {
+		obj[key] = value;
+	} else {
+		delete obj[key];
+	}
+}
+export function apply<A, B>(value: A, values: Array<B>, func: (value: A, value2: B) => A): A {
+	values.forEach((value2) => {
+		value = func(value, value2);
+	});
+	return value;
 }

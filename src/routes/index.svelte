@@ -1,19 +1,23 @@
 <script lang="ts">
-	import Widget from '$lib/components/widget_components/widget.svelte';
-	import ElementSearch from '$lib/components/widget_components/widgets/chem/molecular_formular/element_search.svelte';
-import MolarCalculator from '$lib/components/widget_components/widgets/chem/molecular_formular/molar_calculator.svelte';
+	import Widget from '$lib/components/widget.svelte';
+	import ElementSearch from '$lib/components/widgets/chem/molecular_formular/element_search.svelte';
+	import MolarCalculator from '$lib/components/widgets/chem/molecular_formular/molar_calculator.svelte';
+	import MolSolver from '$lib/components/widgets/chem/molecular_formular/mol_solver.svelte';
 	import { grid_locked } from '$lib/stores';
-	import { range } from '$lib/utils/general';
 	import Grid from 'svelte-grid';
 	import gridHelp from 'svelte-grid/build/helper/index.mjs';
 
-	const id = () => '_' + Math.random().toString(36).substring(2, 9+2);
+	const id = () =>
+		'_' +
+		Math.random()
+			.toString(36)
+			.substring(2, 9 + 2);
 
 	const COLS = 3;
 
-	const current_widgets = [ElementSearch, MolarCalculator]
+	const current_widgets = [ElementSearch, MolarCalculator, MolSolver];
 
-	function generateLayout(size: number) {
+	function generateLayout() {
 		const p = current_widgets.map((w) => ({
 			[COLS]: gridHelp.item({ x: 0, y: 0, w: 3, h: 3, min: { w: 2, h: 2 } }),
 			id: id(),
@@ -35,7 +39,7 @@ import MolarCalculator from '$lib/components/widget_components/widgets/chem/mole
 			w: number;
 			h: number;
 		};
-	}> = gridHelp.adjust(generateLayout(16), COLS);
+	}> = gridHelp.adjust(generateLayout(), COLS);
 
 	const width_to_cols = [
 		[1600, 18],
