@@ -7,6 +7,7 @@ specifiers:
   '@sveltejs/adapter-node': ^1.0.0-next.68
   '@sveltejs/adapter-static': ^1.0.0-next.28
   '@sveltejs/kit': next
+  '@types/lodash': ^4.14.178
   '@types/node': '*'
   '@typescript-eslint/eslint-plugin': ^5.11.0
   '@typescript-eslint/parser': ^5.11.0
@@ -15,6 +16,7 @@ specifiers:
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.4.0
+  lodash: ^4.17.21
   nerdamer: ^1.1.13
   node-sass: ^7.0.1
   prettier: ^2.5.1
@@ -31,6 +33,7 @@ specifiers:
   vitest: ^0.3.4
 
 dependencies:
+  lodash: 4.17.21
   nerdamer: 1.1.13
   svelte-click-outside: 1.0.0
 
@@ -41,6 +44,7 @@ devDependencies:
   '@sveltejs/adapter-node': 1.0.0-next.68
   '@sveltejs/adapter-static': 1.0.0-next.28
   '@sveltejs/kit': 1.0.0-next.267_sass@1.49.7+svelte@3.46.4
+  '@types/lodash': 4.14.178
   '@types/node': 17.0.17
   '@typescript-eslint/eslint-plugin': 5.11.0_3bf83de4bfb4bafe384c8467b43d3174
   '@typescript-eslint/parser': 5.11.0_eslint@7.32.0+typescript@4.5.5
@@ -441,6 +445,10 @@ packages:
 
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
+    dev: true
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: true
 
   /@types/minimist/1.2.2:
@@ -2275,7 +2283,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /loupe/2.3.4:
     resolution: {integrity: sha512-OvKfgCC2Ndby6aSTREl5aCCPTNIzlDfQZvZxNUrBrihDhL3xcrYegTblhmEiCrg2kKQz4XsFIaemE5BF4ybSaQ==}

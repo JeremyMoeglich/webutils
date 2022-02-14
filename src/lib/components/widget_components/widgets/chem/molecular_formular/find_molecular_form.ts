@@ -1,4 +1,4 @@
-import { similarity } from '$lib/utils/similarity';
+import similarity from '$lib/utils/similarity';
 import { molecular_forms, molecular_forms_common } from './molecular_formular_list';
 
 interface match {

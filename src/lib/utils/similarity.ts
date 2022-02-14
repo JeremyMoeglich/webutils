@@ -1,4 +1,4 @@
-export function similarity(s1: string, s2: string): number {
+export default function similarity(s1: string, s2: string): number {
 	let longer = s1;
 	let shorter = s2;
 	if (s1.length < s2.length) {

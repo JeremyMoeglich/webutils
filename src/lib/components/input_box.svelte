@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { drop_data, get_drag_content, lock_grid, unlock_grid } from '$lib/utils/drag';
 	export let data: drop_data;
+	export let note: string;
 </script>
 
+{#if note}{note}: {/if}
 <input
 	type="text"
 	bind:value={data.text}
