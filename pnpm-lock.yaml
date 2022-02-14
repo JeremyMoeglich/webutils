@@ -15,6 +15,7 @@ specifiers:
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.4.0
+  nerdamer: ^1.1.13
   node-sass: ^7.0.1
   prettier: ^2.5.1
   prettier-plugin-svelte: ^2.6.0
@@ -30,6 +31,7 @@ specifiers:
   vitest: ^0.3.4
 
 dependencies:
+  nerdamer: 1.1.13
   svelte-click-outside: 1.0.0
 
 devDependencies:
@@ -2510,6 +2512,11 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
     dev: true
+
+  /nerdamer/1.1.13:
+    resolution: {integrity: sha512-kQGQYd42eQpKDOnU8ZnRKF47c+gK6jVC46eUchrABsovtFruHvsjyjBO32jck8QnpZE5z5R8HQw72hQX9Oq2MQ==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /no-case/3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}

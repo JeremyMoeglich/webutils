@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Widget from '$lib/components/widget_components/widget.svelte';
 	import ElementSearch from '$lib/components/widget_components/widgets/chem/molecular_formular/element_search.svelte';
+import MolarCalculator from '$lib/components/widget_components/widgets/chem/molecular_formular/molar_calculator.svelte';
 	import { grid_locked } from '$lib/stores';
 	import { range } from '$lib/utils/general';
 	import Grid from 'svelte-grid';
@@ -10,11 +11,13 @@
 
 	const COLS = 3;
 
+	const current_widgets = [ElementSearch, MolarCalculator]
+
 	function generateLayout(size: number) {
-		const p = range(size).map(() => ({
+		const p = current_widgets.map((w) => ({
 			[COLS]: gridHelp.item({ x: 0, y: 0, w: 3, h: 3, min: { w: 2, h: 2 } }),
 			id: id(),
-			data: { widget: ElementSearch }
+			data: { widget: w }
 		}));
 		return p;
 	}

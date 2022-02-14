@@ -46,6 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"nerdamer": "^1.1.13",
 		"svelte-click-outside": "^1.0.0"
 	}
 }
