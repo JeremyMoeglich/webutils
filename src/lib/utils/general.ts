@@ -34,3 +34,10 @@ export function apply<A, B>(value: A, values: Array<B>, func: (value: A, value2:
 	});
 	return value;
 }
+
+export function multi_apply<A, B>(value: A, values: Array<[B, (value: A, value2: B) => A]>): A {
+	values.forEach(([value2, func]) => {
+		value = func(value, value2);
+	});
+	return value;
+}

@@ -29,7 +29,7 @@ export async function solve_for_mol(
 	equasions.forEach((equasion) => {
 		const diff = xor(intersection(getKeys(mol_attributes), equasion.values), equasion.values);
 		if (diff.length === 1) {
-			const p: Expression = nerdamer.solve(equasion.expr, diff[0]).evaluate(clone(mol_attributes));
+			const p = nerdamer.solve(equasion.expr, diff[0]).evaluate(clone(mol_attributes));
 			const v = Number(p.text().replace('[', '').replace(']', ''));
 			if (typeof v === 'number') {
 				changed = true;

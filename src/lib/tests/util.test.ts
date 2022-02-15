@@ -1,4 +1,4 @@
-import { zip, range, pairs, set_empty, apply } from '../utils/general';
+import { zip, range, pairs, set_empty, apply, multi_apply } from '../utils/general';
 import { assert, it } from 'vitest';
 
 it('Pairs', () => {
@@ -45,5 +45,16 @@ it('Apply', () => {
 	assert.equal(
 		apply('2', [1, 2, 3], (v1, v2) => v1 + v2),
 		'2123'
+	);
+}, 1000);
+
+it('MultiApply', () => {
+	assert.equal(
+		multi_apply(7, [
+			[1, (v1, v2) => v1 + v2],
+			[2, (v1, v2) => v1 - v2],
+			[3, (v1, v2) => v1 * v2]
+		]),
+		18
 	);
 }, 1000);

@@ -20,13 +20,16 @@
 <style lang="scss">
 	div {
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 		max-width: 99%;
-		width: 210px;
+		width: fit-content;
+		gap: 8px;
 		margin: 6px;
+		flex-wrap: wrap;
 		input {
 			max-width: 83%;
-			width: 200px;
+			width: fit-content;
 			border-width: 0px;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.438);
 		}

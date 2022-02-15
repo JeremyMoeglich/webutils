@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { calculate_molar_mass } from './molar_mass';
-	import DraggableBox from '$lib/components/inputs/draggable_box.svelte';
-	import InputBox from '$lib/components/inputs/input_box.svelte';
+	import DraggableBox from '$lib/components/IO/draggable_box.svelte';
+	import InputBox from '$lib/components/IO/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
-	import LockDrag from '$lib/components/inputs/lock_drag.svelte';
+	import LockDrag from '$lib/components/IO/lock_drag.svelte';
 
 	let data: drop_data = { text: '', optional: {} };
 	$: molar_mass = calculate_molar_mass(data.text);

@@ -4,6 +4,7 @@
 	import MolarCalculator from '$lib/components/widgets/chem/molecular_formular/molar_calculator.svelte';
 	import MolSolver from '$lib/components/widgets/chem/molecular_formular/mol_solver.svelte';
 	import { grid_locked } from '$lib/stores';
+	import { widgets } from '$lib/widgets';
 	import Grid from 'svelte-grid';
 	import gridHelp from 'svelte-grid/build/helper/index.mjs';
 
@@ -15,13 +16,13 @@
 
 	const COLS = 3;
 
-	const current_widgets = [ElementSearch, MolarCalculator, MolSolver];
+	const current_widgets = widgets;
 
 	function generateLayout() {
-		const p = current_widgets.map((w) => ({
-			[COLS]: gridHelp.item({ x: 0, y: 0, w: 3, h: 3, min: { w: 2, h: 2 } }),
+		const p = Object.values(current_widgets).map((data) => ({
+			[COLS]: gridHelp.item({ x: 0, y: 0, w: 3, h: 3, min: data.min }),
 			id: id(),
-			data: { widget: w }
+			data: { widget: data.component }
 		}));
 		return p;
 	}

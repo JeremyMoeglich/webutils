@@ -18,6 +18,20 @@ export function set_drag_content(event: DragEvent, data: drop_data) {
 	event.dataTransfer.setData('text/plain', JSON.stringify(data));
 }
 
+export function get_by_priority: {[k]}(
+	data: drop_data,
+	priorities: Array<'text' | keyof optional_drow_data>
+) {
+	priorities.forEach((priority) => {
+		if (priority === 'text') {
+			return data.text;
+		} else if (priority in data.optional) {
+			return data.optional[priority];
+		}
+	});
+	return data.text;
+}
+
 export function get_drag_content(event: DragEvent): drop_data {
 	event.preventDefault();
 	return JSON.parse(event.dataTransfer.getData('text/plain'));

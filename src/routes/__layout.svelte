@@ -33,6 +33,7 @@
 		margin: 0px;
 		padding: 0px;
 		background-color: rgb(27, 27, 27);
+		background: linear-gradient(rgb(51, 15, 15), rgb(17, 15, 43));
 	}
 	.main_content {
 		width: 100%;
@@ -41,9 +42,11 @@
 	:global(button) {
 		padding: 5px;
 		border-radius: 3px;
-		border-width: 0px;
+		border-width: 2px;
 		box-shadow: 0px 0px 3px black;
 		margin: 2px;
+		color: white;
+		background-color: rgb(13, 63, 61);
 	}
 	:global(*) {
 		box-sizing: border-box;

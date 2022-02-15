@@ -4,18 +4,20 @@
 	export let drag_data: drop_data;
 </script>
 
-<LockDrag>
-	<div class="main" draggable={true} on:dragstart={(event) => set_drag_content(event, drag_data)}>
-		<slot />
-	</div>
-</LockDrag>
+{#if drag_data.text}
+	<LockDrag>
+		<div class="main" draggable={true} on:dragstart={(event) => set_drag_content(event, drag_data)}>
+			{drag_data.text}
+		</div>
+	</LockDrag>
+{/if}
 
-<style>
+<style lang="scss">
 	.main {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border: 2px solid rgb(252, 140, 140);
+		border: 2px solid rgb(75, 7, 92);
 		background-color: rgb(53, 2, 2);
 		width: fit-content;
 		min-width: 30px;
@@ -23,7 +25,11 @@
 		border-radius: 4px;
 		padding: 1px;
 		font-size: smaller;
-		background: linear-gradient(#863c3c, #331842);
+		background: linear-gradient(#68adaf, #331842);
 		margin: 5px;
+		transition-duration: 100ms;
+		&:hover {
+			background: linear-gradient(#538586, #35102c);
+		}
 	}
 </style>
