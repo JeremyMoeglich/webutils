@@ -14,5 +14,7 @@
 	.main {
 		border: 2px solid red;
 		background-color: white;
+		max-width: 200px;
+		margin: 5px;
 	}
 </style>

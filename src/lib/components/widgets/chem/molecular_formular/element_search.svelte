@@ -77,9 +77,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
+		max-width: max-content;
+		padding-top: 6px;
 	}
 	.match {
 		display: flex;
-		gap: 7px;
+		justify-content: center;
+		gap: 3px;
 	}
 </style>

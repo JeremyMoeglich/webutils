@@ -6,13 +6,8 @@
 	<div class="main_content">
 		<slot />
 	</div>
-	<div class="sidebar">
-		<ul>
-			{#each $notes as note}
-				<li>{note.text}</li>
-			{/each}
-		</ul>
-	</div>
+	<div class="sidebar" />
+	<div class="sidebar-spacer" />
 </div>
 
 <style>
@@ -23,13 +18,20 @@
 		height: 100%;
 	}
 	.sidebar {
-		width: 100px;
+		position: fixed;
+		right: 0px;
+		width: 90px;
 		height: 100vh;
 		background-color: rgb(104, 104, 104);
+	}
+	.sidebar-spacer {
+		width: 100px;
+		height: 100vh;
 	}
 	:global(body) {
 		margin: 0px;
 		padding: 0px;
+		background-color: rgb(27, 27, 27);
 	}
 	.main_content {
 		width: 100%;
