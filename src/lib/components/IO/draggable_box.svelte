@@ -2,11 +2,15 @@
 	import { drop_data, set_drag_content } from '$lib/utils/drag';
 	import LockDrag from './lock_drag.svelte';
 	export let drag_data: drop_data;
+
+	function keypress(event: MouseEvent) {
+		navigator.clipboard.writeText(drag_data.text)
+	}
 </script>
 
 {#if drag_data.text}
 	<LockDrag>
-		<div class="main" draggable={true} on:dragstart={(event) => set_drag_content(event, drag_data)}>
+		<div class="main" draggable={true} on:click={keypress} on:dragstart={(event) => set_drag_content(event, drag_data)}>
 			{drag_data.text}
 		</div>
 	</LockDrag>

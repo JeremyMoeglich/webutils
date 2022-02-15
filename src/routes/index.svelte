@@ -1,8 +1,5 @@
 <script lang="ts">
 	import Widget from '$lib/components/widget.svelte';
-	import ElementSearch from '$lib/components/widgets/chem/molecular_formular/element_search.svelte';
-	import MolarCalculator from '$lib/components/widgets/chem/molecular_formular/molar_calculator.svelte';
-	import MolSolver from '$lib/components/widgets/chem/molecular_formular/mol_solver.svelte';
 	import { grid_locked } from '$lib/stores';
 	import { widgets } from '$lib/widgets';
 	import Grid from 'svelte-grid';
@@ -12,17 +9,17 @@
 		'_' +
 		Math.random()
 			.toString(36)
-			.substring(2, 9 + 2);
+			.slice(2, 9 + 2);
 
 	const COLS = 3;
 
 	const current_widgets = widgets;
 
 	function generateLayout() {
-		const p = Object.values(current_widgets).map((data) => ({
-			[COLS]: gridHelp.item({ x: 0, y: 0, w: 3, h: 3, min: data.min }),
+		const p = Object.entries(current_widgets).map(([name, data]) => ({
+			[COLS]: gridHelp.item({ x: 0, y: 0, w: data.min.w, h: data.min.h, min: data.min }),
 			id: id(),
-			data: { widget: data.component }
+			data: { widget: data.component, name: name }
 		}));
 		return p;
 	}
@@ -70,7 +67,7 @@
 
 <div class="grid">
 	<Grid bind:items cols={width_to_cols} rowHeight={90} gap={[5, 5]} let:dataItem>
-		<Widget child_component={dataItem.data.widget} />
+		<Widget child_component={dataItem.data.widget} name={dataItem.data.name} />
 	</Grid>
 </div>
 

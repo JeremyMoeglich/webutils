@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type { SvelteComponent } from 'svelte';
 	export let child_component: typeof SvelteComponent;
+	export let name: string;
 </script>
 
 <div class="alignment">
+	<p>{name}</p>
 	<div class="content">
 		<svelte:component this={child_component} />
 	</div>
@@ -19,8 +21,10 @@
 		box-shadow: 2px 2px 5px rgb(18, 75, 122);
 		border-radius: 5px;
 	}
-	.content {
-		margin-left: auto;
-		margin-right: auto;
+	p {
+		margin-top: 0px;
+		font-weight: 600;
+		color: white;
 	}
 </style>
+

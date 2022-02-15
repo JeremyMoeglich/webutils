@@ -1,37 +1,84 @@
 <script lang="ts">
-	import { drop_data, get_drag_content, set_drag_content } from '$lib/utils/drag';
+	import {
+		drop_data,
+		get_by_priority,
+		get_drag_content,
+		optional_drop_data,
+		set_drag_content
+	} from '$lib/utils/drag';
 	import LockDrag from './lock_drag.svelte';
 	export let data: drop_data;
 	export let note = '';
+	export let priority: Array<keyof optional_drop_data> = [];
+	$: {
+		data.text = get_by_priority(data, priority).toString();
+		data.optional = {};
+	}
 </script>
 
 <LockDrag>
-	<div>
-		{#if note}{note}: {/if}
-		<input
-			type="text"
-			bind:value={data.text}
-			on:dragstart={event => set_drag_content(event, data)}
-			on:drop={(event) => (data = get_drag_content(event))}
-		/>
+	<div class="alignment">
+		{#if note}<p>{note}:</p>{/if}
+		<div class="field">
+			<input
+				type="text"
+				bind:value={data.text}
+				on:dragstart={(event) => set_drag_content(event, data)}
+				on:drop={(event) => (data = get_drag_content(event))}
+			/>
+			<div
+				class="copy"
+				on:click={async () => {
+					await navigator.clipboard.writeText(data.text);
+				}}
+			>
+				<img src="/images/widget_icons/copy.svg" alt="" />
+			</div>
+		</div>
 	</div>
 </LockDrag>
 
 <style lang="scss">
-	div {
+	.alignment {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 99%;
 		width: fit-content;
-		gap: 8px;
+		gap: 4px;
 		margin: 6px;
 		flex-wrap: wrap;
-		input {
-			max-width: 83%;
-			width: fit-content;
-			border-width: 0px;
+		p {
+			margin: 0px;
+			width: 20px;
+			min-width: fit-content;
+		}
+		.field {
+			position: relative;
+			width: 130px;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.438);
+			input {
+				width: 100%;
+				height: 100%;
+			}
+			height: 20px;
+			.copy {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 15%;
+				background-color: rgb(194, 194, 194);
+				height: 100%;
+				right: 0px;
+				top: 0px;
+				img {
+					width: 80%;
+				}
+				box-shadow: -2px 0px 3px -1px rgba(0, 0, 0, 0.466);
+				&:hover {
+					background-color: rgb(145, 161, 182);
+				}
+			}
 		}
 	}
 </style>

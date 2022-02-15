@@ -2,7 +2,7 @@ import type { molecular_formular_type } from '$lib/components/widgets/chem/molec
 import type { element_mol_attributes } from '$lib/components/widgets/chem/molecular_formular/solve_for_mol';
 import { grid_locked } from '$lib/stores';
 
-interface optional_drow_data {
+export interface optional_drop_data {
 	number: number;
 	molecular_formular: molecular_formular_type;
 	mol_attributes: element_mol_attributes;
@@ -10,25 +10,22 @@ interface optional_drow_data {
 
 export interface drop_data {
 	text: string;
-	optional: Partial<optional_drow_data>;
+	optional: Partial<optional_drop_data>;
 }
 
 export function set_drag_content(event: DragEvent, data: drop_data) {
-	console.log(`Set to ${JSON.stringify(data)}`);
 	event.dataTransfer.setData('text/plain', JSON.stringify(data));
 }
 
-export function get_by_priority: {[k]}(
+export function get_by_priority<K extends keyof optional_drop_data>(
 	data: drop_data,
-	priorities: Array<'text' | keyof optional_drow_data>
-) {
-	priorities.forEach((priority) => {
-		if (priority === 'text') {
-			return data.text;
-		} else if (priority in data.optional) {
+	priorities: K[]
+): optional_drop_data[K] | string {
+	for (const priority of priorities) {
+		if (priority in data.optional) {
 			return data.optional[priority];
 		}
-	});
+	}
 	return data.text;
 }
 

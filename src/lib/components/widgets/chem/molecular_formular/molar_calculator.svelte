@@ -18,9 +18,7 @@
 			text: molar_mass.toString(),
 			optional: { number: molar_mass instanceof Error ? 0 : molar_mass }
 		}}
-	>
-		{molar_mass}
-	</DraggableBox>
+	/>
 	<LockDrag>
 		<button
 			on:click={() => {

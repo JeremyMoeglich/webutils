@@ -4,9 +4,9 @@
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
 	import DraggableBox from '$lib/components/IO/draggable_box.svelte';
-import { calculate_molar_mass } from './molar_mass';
+	import { calculate_molar_mass } from './molar_mass';
 
-	let data: drop_data = { text: 'Salzs', optional: {} };
+	let data: drop_data = { text: '', optional: {} };
 
 	interface row {
 		left: {
@@ -27,12 +27,12 @@ import { calculate_molar_mass } from './molar_mass';
 				const molecular_formular = parse_molecular_formular(match.molecular_form_string);
 				let molecular_drop_data: drop_data;
 				if (!(molecular_formular instanceof Error)) {
-					let molar_mass = calculate_molar_mass(molecular_formular)
+					let molar_mass = calculate_molar_mass(molecular_formular);
 					if (molar_mass instanceof Error) {
-						molar_mass = 0
+						molar_mass = 0;
 					}
 					molecular_drop_data = {
-						optional: { molecular_formular: molecular_formular, number: molar_mass},
+						optional: { molecular_formular: molecular_formular, number: molar_mass },
 						text: match.molecular_form_string
 					};
 				}
@@ -67,13 +67,13 @@ import { calculate_molar_mass } from './molar_mass';
 </script>
 
 <div class="alignment">
-	Element Search: <InputBox bind:data />
+	<InputBox bind:data />
 	<div class="results">
 		{#each values as row}
 			<div class="match">
-				<DraggableBox drag_data={row.left.drop_data}>{row.left.text}</DraggableBox>
+				<DraggableBox drag_data={row.left.drop_data} />
 				-
-				<DraggableBox drag_data={row.right.drop_data}>{row.right.text}</DraggableBox>
+				<DraggableBox drag_data={row.right.drop_data} />
 			</div>
 		{/each}
 	</div>

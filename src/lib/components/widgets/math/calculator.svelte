@@ -2,7 +2,7 @@
 	import DraggableBox from '$lib/components/IO/draggable_box.svelte';
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
-	import nerdamer from 'nerdamer/all';
+	import nerdamer from 'nerdamer';
 
 	let data: drop_data = { text: '', optional: {} };
     let result: string

@@ -2,7 +2,7 @@
 	import ErrorMessage from '$lib/components/IO/error_message.svelte';
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import LockDrag from '$lib/components/IO/lock_drag.svelte';
-	import { drop_data, get_by_priority } from '$lib/utils/drag';
+	import { drop_data, get_by_priority, optional_drop_data } from '$lib/utils/drag';
 	import { set_empty } from '$lib/utils/general';
 	import { mol_symbol_type, solve_for_mol } from './solve_for_mol';
 
@@ -17,17 +17,18 @@
 	};
 
 	$: Object.entries(values).map(([k, v]) => {
-		set_empty(data.optional.mol_attributes, k, get_by_priority(v, ['number']) as string | number);
+		set_empty(data.optional.mol_attributes, k, Number(get_by_priority(v, ['number'])));
 	});
 	let error_message = '';
+	const value_priority: Array<keyof optional_drop_data> = ['number'];
 </script>
 
 <div>
-	<InputBox bind:data={values.n} note="n" />
-	<InputBox bind:data={values.m} note="m" />
-	<InputBox bind:data={values.M} note="M" />
-	<InputBox bind:data={values.c} note="c" />
-	<InputBox bind:data={values.V} note="V" />
+	<InputBox bind:data={values.n} note="n" priority={value_priority} />
+	<InputBox bind:data={values.m} note="m" priority={value_priority} />
+	<InputBox bind:data={values.M} note="M" priority={value_priority} />
+	<InputBox bind:data={values.c} note="c" priority={value_priority} />
+	<InputBox bind:data={values.V} note="V" priority={value_priority} />
 
 	<LockDrag>
 		<button
