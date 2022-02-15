@@ -29,6 +29,7 @@
 		height: 100vh;
 	}
 	:global(body) {
+		font-family: Arial, Helvetica, sans-serif;
 		margin: 0px;
 		padding: 0px;
 		background-color: rgb(27, 27, 27);
@@ -36,6 +37,13 @@
 	.main_content {
 		width: 100%;
 		height: 100%;
+	}
+	:global(button) {
+		padding: 5px;
+		border-radius: 3px;
+		border-width: 0px;
+		box-shadow: 0px 0px 3px black;
+		margin: 2px;
 	}
 	:global(*) {
 		box-sizing: border-box;

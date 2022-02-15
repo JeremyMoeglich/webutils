@@ -40,4 +40,13 @@
 			Calculate
 		</button>
 	</LockDrag>
+	<LockDrag>
+		<button
+			on:click={async () => {
+				Object.keys(values).forEach((k) => {values[k].text = ''})
+			}}
+		>
+			Clear
+		</button>
+	</LockDrag>
 </div>
