@@ -1,6 +1,6 @@
-import { elements } from '../periodic_table/elements';
-import type { molecular_formular_type } from './molecular_formular_type';
+import { elements } from '../../../data/chem/elements';
 import { parse_molecular_formular } from './parser';
+import type { molecular_formular_type } from './type';
 
 export function calculate_molar_mass(formular: string | molecular_formular_type): number | Error {
 	let molecular_formular: molecular_formular_type;

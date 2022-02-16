@@ -1,6 +1,6 @@
-import { elements } from '../periodic_table/elements';
-import type { element_symbol } from '../periodic_table/types';
-import type { molecular_formular_type } from './molecular_formular_type';
+import { elements } from "../../../data/chem/elements";
+import type { element_symbol } from "../types";
+import type { molecular_formular_type } from "./type";
 
 const symbols = elements.map((v) => v.Symbol);
 

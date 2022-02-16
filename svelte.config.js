@@ -2,6 +2,7 @@ import preprocess from 'svelte-preprocess';
 import staticAdapter from '@sveltejs/adapter-static';
 import nodeAdapter from '@sveltejs/adapter-node';
 import netlifyAdapter from '@sveltejs/adapter-netlify';
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 //@ts-check
 
@@ -42,7 +43,10 @@ const config = {
 
 		//adapter: nodeAdapter({ out: 'build',precompress: true,target: 'node16' }),
 		//adapter: staticAdapter({ pages: 'build',prerender: true }),
-		adapter: adapter()
+		adapter: adapter(),
+		vite: {
+			plugins: [tsconfigPaths()]
+		}
 	}
 };
 

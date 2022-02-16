@@ -41,3 +41,7 @@ export function multi_apply<A, B>(value: A, values: Array<[B, (value: A, value2:
 	});
 	return value;
 }
+
+export function typed_keys<A extends string | symbol | number>(obj: Record<A, unknown>): Array<A> {
+	return Object.keys(obj) as Array<A>
+}

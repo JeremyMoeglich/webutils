@@ -2,9 +2,9 @@
 	import ErrorMessage from '$lib/components/IO/error_message.svelte';
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import LockDrag from '$lib/components/IO/lock_drag.svelte';
+	import { mol_symbol_type, solve_for_mol } from '$lib/utils/chem/mol/solve_for_mol';
 	import { drop_data, get_by_priority, optional_drop_data } from '$lib/utils/drag';
-	import { set_empty } from '$lib/utils/general';
-	import { mol_symbol_type, solve_for_mol } from './solve_for_mol';
+	import { set_empty, typed_keys } from '$lib/utils/general';
 
 	let data: drop_data = { text: '', optional: { mol_attributes: {} } };
 
@@ -16,6 +16,17 @@
 		V: { text: '', optional: {} }
 	};
 
+	async function calculate() {
+		try {
+			data.optional.mol_attributes = await solve_for_mol(data.optional.mol_attributes);
+			Object.entries(data.optional.mol_attributes).map(([k, v]) => {
+				values[k].text = v.toString();
+			});
+			error_message = '';
+		} catch {
+			error_message = 'Invalid Input';
+		}
+	}
 	$: Object.entries(values).map(([k, v]) => {
 		set_empty(data.optional.mol_attributes, k, Number(get_by_priority(v, ['number'])));
 	});
@@ -24,28 +35,12 @@
 </script>
 
 <div>
-	<InputBox bind:data={values.n} note="n" priority={value_priority} />
-	<InputBox bind:data={values.m} note="m" priority={value_priority} />
-	<InputBox bind:data={values.M} note="M" priority={value_priority} />
-	<InputBox bind:data={values.c} note="c" priority={value_priority} />
-	<InputBox bind:data={values.V} note="V" priority={value_priority} />
+	{#each typed_keys(values) as char}
+		<InputBox bind:data={values[char]} note={char} priority={value_priority} exec={calculate} />
+	{/each}
 
 	<LockDrag>
-		<button
-			on:click={async () => {
-				try {
-					data.optional.mol_attributes = await solve_for_mol(data.optional.mol_attributes);
-					Object.entries(data.optional.mol_attributes).map(([k, v]) => {
-						values[k].text = v.toString();
-					});
-					error_message = '';
-				} catch {
-					error_message = 'Invalid Input';
-				}
-			}}
-		>
-			Calculate
-		</button>
+		<button on:click={calculate}> Calculate </button>
 	</LockDrag>
 	<ErrorMessage message={error_message} />
 	<LockDrag>

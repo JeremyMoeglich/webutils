@@ -1,6 +1,6 @@
-import { calculate_molar_mass } from '../components/widgets/chem/molecular_formular/molar_mass';
+import { calculate_molar_mass } from '../utils/chem/molecular_formular/molar_mass';
 import { assert, it } from 'vitest';
-import { parse_molecular_formular } from '../components/widgets/chem/molecular_formular/parser';
+import { parse_molecular_formular } from '../utils/chem/molecular_formular/parser';
 
 it('Molar Mass Calculation', () => {
 	assert.equal(calculate_molar_mass(''), 0);

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { parse_molecular_formular } from './parser';
-	import { search_molecular_form } from './find_molecular_form';
+	import { parse_molecular_formular } from '../../../../utils/chem/molecular_formular/parser';
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import type { drop_data } from '$lib/utils/drag';
+	import { calculate_molar_mass } from '../../../../utils/chem/molecular_formular/molar_mass';
+	import { search_molecular_form } from '$lib/utils/chem/molecular_formular/search';
 	import DraggableBox from '$lib/components/IO/draggable_box.svelte';
-	import { calculate_molar_mass } from './molar_mass';
 
 	let data: drop_data = { text: '', optional: {} };
 

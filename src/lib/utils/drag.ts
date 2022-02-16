@@ -1,6 +1,6 @@
-import type { molecular_formular_type } from '$lib/components/widgets/chem/molecular_formular/molecular_formular_type';
-import type { element_mol_attributes } from '$lib/components/widgets/chem/molecular_formular/solve_for_mol';
 import { grid_locked } from '$lib/stores';
+import type { element_mol_attributes } from './chem/mol/solve_for_mol';
+import type { molecular_formular_type } from './chem/molecular_formular/type';
 
 export interface optional_drop_data {
 	number: number;
@@ -23,7 +23,7 @@ export function get_by_priority<K extends keyof optional_drop_data>(
 ): optional_drop_data[K] | string {
 	for (const priority of priorities) {
 		if (priority in data.optional) {
-			return data.optional[priority];
+			return (data.optional as Required<typeof data.optional>)[priority];
 		}
 	}
 	return data.text;

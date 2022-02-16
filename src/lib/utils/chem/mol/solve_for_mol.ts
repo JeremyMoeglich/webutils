@@ -1,5 +1,5 @@
+import { nerdamer_to_string } from '../../../utils/math/nerdamer_utils';
 import { clone, intersection, xor } from 'lodash';
-import type { Expression } from 'nerdamer';
 export const mol_symbols = ['n', 'm', 'M', 'V', 'c'] as const;
 export type mol_symbol_type = typeof mol_symbols[number];
 export type element_mol_attributes = Partial<Record<mol_symbol_type, number>>;
@@ -30,7 +30,7 @@ export async function solve_for_mol(
 		const diff = xor(intersection(getKeys(mol_attributes), equasion.values), equasion.values);
 		if (diff.length === 1) {
 			const p = nerdamer.solve(equasion.expr, diff[0]).evaluate(clone(mol_attributes));
-			const v = Number(p.text().replace('[', '').replace(']', ''));
+			const v = Number(nerdamer_to_string(p));
 			if (typeof v === 'number') {
 				changed = true;
 				mol_attributes[diff[0]] = v;

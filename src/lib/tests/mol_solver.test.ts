@@ -1,4 +1,4 @@
-import { solve_for_mol } from '../components/widgets/chem/molecular_formular/solve_for_mol';
+import { solve_for_mol } from '../utils/chem/mol/solve_for_mol';
 import { assert, it } from 'vitest';
 
 it('Molar Mass Calculation', async () => {

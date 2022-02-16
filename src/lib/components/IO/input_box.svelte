@@ -6,13 +6,21 @@
 		optional_drop_data,
 		set_drag_content
 	} from '$lib/utils/drag';
+	import DragComponent from './drag_component.svelte';
 	import LockDrag from './lock_drag.svelte';
 	export let data: drop_data;
 	export let note = '';
+	export let exec: () => void = () => {};
 	export let priority: Array<keyof optional_drop_data> = [];
 	$: {
 		data.text = get_by_priority(data, priority).toString();
 		data.optional = {};
+	}
+	function key(event: KeyboardEvent) {
+		console.log(event.key);
+		if (event.key === 'Enter') {
+			exec();
+		}
 	}
 </script>
 
@@ -23,17 +31,19 @@
 			<input
 				type="text"
 				bind:value={data.text}
-				on:dragstart={(event) => set_drag_content(event, data)}
-				on:drop={(event) => (data = get_drag_content(event))}
+				on:keypress={key}
+				on:drop|preventDefault={(event) => (data = get_drag_content(event))}
 			/>
-			<div
+			<button
 				class="copy"
 				on:click={async () => {
 					await navigator.clipboard.writeText(data.text);
 				}}
 			>
-				<img src="/images/widget_icons/copy.svg" alt="" />
-			</div>
+				<DragComponent bind:drag_data={data}
+					><img src="/images/widget_icons/copy.svg" alt="" /></DragComponent
+				>
+			</button>
 		</div>
 	</div>
 </LockDrag>
@@ -67,8 +77,12 @@
 				justify-content: center;
 				align-items: center;
 				width: 15%;
+				border-width: 0px;
+				padding: 0px;
 				background-color: rgb(194, 194, 194);
 				height: 100%;
+				margin: 0px;
+				border-radius: 0px;
 				right: 0px;
 				top: 0px;
 				img {

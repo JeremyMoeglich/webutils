@@ -1,4 +1,4 @@
-import type { element } from './types';
+import type { element } from '../../utils/chem/types';
 
 export const elements: ReadonlyArray<element> = [
 	{
