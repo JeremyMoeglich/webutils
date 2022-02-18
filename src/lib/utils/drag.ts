@@ -22,7 +22,7 @@ export function get_by_priority<K extends keyof optional_drop_data>(
 	priorities: K[]
 ): optional_drop_data[K] | string {
 	for (const priority of priorities) {
-		if (priority in data.optional) {
+		if (priority in data.optional && data.optional[priority] !== undefined) {
 			return data.optional[priority] as optional_drop_data[K];
 		}
 	}
