@@ -1,4 +1,4 @@
-import { maxBy } from 'lodash';
+import { maxBy } from 'lodash-es';
 
 export function range(arg1: number, arg2: number = undefined): Array<number> {
 	if (!arg2) {
