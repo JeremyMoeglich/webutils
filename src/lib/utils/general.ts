@@ -47,6 +47,23 @@ export function multi_apply<A, B>(value: A, values: Array<[B, (value: A, value2:
 	return value;
 }
 
-export function typed_keys<A extends string | symbol | number>(obj: Record<A, unknown>): Array<A> {
-	return Object.keys(obj) as Array<A>;
+export function typed_keys<K extends string | symbol | number>(obj: Record<K, unknown>): Array<K> {
+	return Object.keys(obj) as Array<K>;
+}
+
+export function typed_values<V>(obj: Record<string | symbol | number, V>): Array<V> {
+	return Object.values(obj) as Array<V>;
+}
+
+
+export function typed_entries<K extends string | symbol | number, V>(
+	obj: Partial<Record<K, V>>
+): Array<[K, V]> {
+	return Object.entries(obj) as Array<[K, V]>;
+}
+
+export function typed_from_entries<K extends string | symbol | number, V>(
+	values: [K, V][]
+): Record<K, V> {
+	return Object.fromEntries(values) as Record<K, V>;
 }

@@ -1,6 +1,8 @@
-import { elements } from "../../../data/chem/elements";
-import type { element_symbol } from "../types";
-import type { molecular_formular_type } from "./type";
+import { typed_entries, typed_from_entries } from '$lib/utils/general';
+import { elements } from '../../../data/chem/elements';
+import type { element_symbol } from '../types';
+import molecular_formular_to_string from './to_string';
+import type { molecular_formular_type } from './type';
 
 const symbols = elements.map((v) => v.Symbol);
 
@@ -91,10 +93,13 @@ export function parse_molecular_formular(formular: string): molecular_formular_t
 			return v.value;
 		}
 		const current_section = parse_molecular_formular(v.value);
-		const multiplied_section = Object.fromEntries(
-			Object.entries(current_section).map(([key, value]) => [key, value * v.multiplier])
+		if (current_section instanceof Error) {
+			return current_section
+		}
+		const multiplied_section = typed_from_entries(
+			typed_entries(current_section).map(([key, value]) => [key, value * v.multiplier])
 		) as molecular_formular_type;
-		return flatten_molecular_formular(multiplied_section);
+		return molecular_formular_to_string(multiplied_section);
 	});
 
 	const elements_obj: molecular_formular_type = {};
@@ -122,12 +127,4 @@ export function parse_molecular_formular(formular: string): molecular_formular_t
 		return returned_value;
 	}
 	return elements_obj;
-}
-
-function flatten_molecular_formular(formular: molecular_formular_type): string {
-	let molecular_formular_string = '';
-	Object.entries(formular).forEach(([k, v]) => {
-		molecular_formular_string += `${k}${v}`;
-	});
-	return molecular_formular_string;
 }

@@ -4,7 +4,7 @@
 	import LockDrag from '$lib/components/IO/lock_drag.svelte';
 	import { mol_symbol_type, solve_for_mol } from '$lib/utils/chem/mol/solve_for_mol';
 	import { drop_data, get_by_priority, optional_drop_data } from '$lib/utils/drag';
-	import { set_empty, typed_keys } from '$lib/utils/general';
+	import { set_empty, typed_entries, typed_keys } from '$lib/utils/general';
 
 	let data: drop_data = { text: '', optional: { mol_attributes: {} } };
 
@@ -19,7 +19,7 @@
 	async function calculate() {
 		try {
 			data.optional.mol_attributes = await solve_for_mol(data.optional.mol_attributes);
-			Object.entries(data.optional.mol_attributes).map(([k, v]) => {
+			typed_entries(data.optional.mol_attributes).map(([k, v]) => {
 				values[k].text = v.toString();
 			});
 			error_message = '';
@@ -27,7 +27,7 @@
 			error_message = 'Invalid Input';
 		}
 	}
-	$: Object.entries(values).map(([k, v]) => {
+	$: typed_entries(values).map(([k, v]) => {
 		set_empty(data.optional.mol_attributes, k, Number(get_by_priority(v, ['number'])));
 	});
 	let error_message = '';

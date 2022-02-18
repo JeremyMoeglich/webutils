@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Widget from '$lib/components/widget.svelte';
 	import { grid_locked } from '$lib/stores';
+import { typed_entries } from '$lib/utils/general';
 	import { widgets } from '$lib/widgets';
 	import Grid from 'svelte-grid';
 	import gridHelp from 'svelte-grid/build/helper/index.mjs';
@@ -16,7 +17,7 @@
 	const current_widgets = widgets;
 
 	function generateLayout() {
-		const p = Object.entries(current_widgets).map(([name, data]) => ({
+		const p = typed_entries(current_widgets).map(([name, data]) => ({
 			[COLS]: gridHelp.item({ x: 0, y: 0, w: data.min.w, h: data.min.h, min: data.min }),
 			id: id(),
 			data: { widget: data.component, name: name }
@@ -47,13 +48,13 @@
 		[640, 6],
 		[400, 3]
 	];
-	function isNumeric(value: string): boolean {
-		return /^-?\d+$/.test(value);
+	function isNumeric(value: string | number): boolean {
+		return /^-?\d+$/.test(value.toString());
 	}
 
 	function set_fixed_to(bool: boolean) {
 		items.forEach((obj) => {
-			Object.entries(obj)
+			typed_entries(obj)
 				.filter(([key]) => isNumeric(key))
 				.forEach(([, value]) => {
 					value.draggable = bool;
