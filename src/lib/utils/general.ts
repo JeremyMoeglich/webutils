@@ -1,3 +1,5 @@
+import { maxBy } from 'lodash';
+
 export function range(arg1: number, arg2: number = undefined): Array<number> {
 	if (!arg2) {
 		arg2 = arg1;
@@ -9,7 +11,10 @@ export function range(arg1: number, arg2: number = undefined): Array<number> {
 }
 
 export function zip<T, A extends Array<Array<T>>>(lsts: A) {
-	return range(lsts[0].length).map((i) => lsts.map((lst) => lst[i]));
+	if (lsts.length === 0) {
+		return [];
+	}
+	return range(maxBy(lsts, (v) => v.length).length).map((i) => lsts.map((lst) => lst[i]));
 }
 
 export function pairs<T>(lst: T[]): [T, T][] {
@@ -43,5 +48,5 @@ export function multi_apply<A, B>(value: A, values: Array<[B, (value: A, value2:
 }
 
 export function typed_keys<A extends string | symbol | number>(obj: Record<A, unknown>): Array<A> {
-	return Object.keys(obj) as Array<A>
+	return Object.keys(obj) as Array<A>;
 }

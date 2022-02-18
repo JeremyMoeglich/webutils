@@ -4,7 +4,6 @@
 		get_by_priority,
 		get_drag_content,
 		optional_drop_data,
-		set_drag_content
 	} from '$lib/utils/drag';
 	import DragComponent from './drag_component.svelte';
 	import LockDrag from './lock_drag.svelte';
@@ -17,7 +16,6 @@
 		data.optional = {};
 	}
 	function key(event: KeyboardEvent) {
-		console.log(event.key);
 		if (event.key === 'Enter') {
 			exec();
 		}

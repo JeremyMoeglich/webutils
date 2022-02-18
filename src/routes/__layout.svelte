@@ -1,7 +1,3 @@
-<script lang="ts">
-	import { notes } from '$lib/stores';
-</script>
-
 <div class="alignment">
 	<div class="main_content">
 		<slot />
@@ -22,7 +18,7 @@
 		right: 0px;
 		width: 90px;
 		height: 100vh;
-		background-color: rgb(104, 104, 104);
+		background-color: rgb(28, 28, 37);
 	}
 	.sidebar-spacer {
 		width: 100px;
@@ -32,7 +28,7 @@
 		font-family: Arial, Helvetica, sans-serif;
 		margin: 0px;
 		padding: 0px;
-		background-color: rgb(27, 27, 27);
+		background-color: rgb(17, 15, 43);
 		background: linear-gradient(rgb(51, 15, 15), rgb(17, 15, 43));
 	}
 	.main_content {

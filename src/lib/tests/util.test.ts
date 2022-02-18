@@ -24,6 +24,26 @@ it('Zip', () => {
 			[2, undefined]
 		]
 	);
+	assert.deepEqual(
+		zip([
+			[5, 6, 8],
+			[7, 9, 0, 9]
+		]),
+		[
+			[5, 7],
+			[6, 9],
+			[8, 0],
+			[undefined, 9]
+		]
+	);
+	assert.deepEqual(
+		zip([[1,2,3]]),
+		[[1],[2],[3]]
+	);
+	assert.deepEqual(
+		zip([]),
+		[]
+	);
 }, 1000);
 
 it('Range', () => {
@@ -31,6 +51,7 @@ it('Range', () => {
 	assert.deepEqual(range(3, 11), [3, 4, 5, 6, 7, 8, 9, 10]);
 	assert.deepEqual(range(5, 5), []);
 	assert.deepEqual(range(4, 5), [4]);
+	assert.deepEqual(range(0), []);
 }, 1000);
 
 it('SetEmpty', () => {

@@ -1,4 +1,4 @@
-import { grid_locked } from '$lib/stores';
+import { grid_locked } from '../stores';
 import type { element_mol_attributes } from './chem/mol/solve_for_mol';
 import type { molecular_formular_type } from './chem/molecular_formular/type';
 
@@ -23,7 +23,7 @@ export function get_by_priority<K extends keyof optional_drop_data>(
 ): optional_drop_data[K] | string {
 	for (const priority of priorities) {
 		if (priority in data.optional) {
-			return (data.optional as Required<typeof data.optional>)[priority];
+			return data.optional[priority] as optional_drop_data[K];
 		}
 	}
 	return data.text;

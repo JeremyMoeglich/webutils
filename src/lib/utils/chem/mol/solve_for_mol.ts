@@ -22,7 +22,8 @@ const equasions: Array<equasion_type<mol_symbol_type>> = [
 const getKeys = Object.keys as <T extends object>(obj: T) => Array<keyof T>;
 
 export async function solve_for_mol(
-	mol_attributes: element_mol_attributes
+	mol_attributes: element_mol_attributes,
+	prec = 3
 ): Promise<element_mol_attributes> {
 	let changed = false;
 	const nerdamer = await import('nerdamer/all.js');
@@ -30,7 +31,7 @@ export async function solve_for_mol(
 		const diff = xor(intersection(getKeys(mol_attributes), equasion.values), equasion.values);
 		if (diff.length === 1) {
 			const p = nerdamer.solve(equasion.expr, diff[0]).evaluate(clone(mol_attributes));
-			const v = Number(nerdamer_to_string(p));
+			const v = Number(nerdamer_to_string(p, prec));
 			if (typeof v === 'number') {
 				changed = true;
 				mol_attributes[diff[0]] = v;

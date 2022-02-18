@@ -1,8 +1,8 @@
-<script>
-	import { lock_grid, unlock_grid } from '$lib/utils/drag';
+<script lang="ts">
+	export let scale: 'fit' | 'fill' = 'fit'
 </script>
 
-<div on:mouseenter={lock_grid} on:mouseleave={unlock_grid}>
+<div class:fill={scale === 'fill'}>
 	<slot />
 </div>
 
@@ -11,5 +11,9 @@
 	div {
 		width: fit-content;
 		height: fit-content;
+	}
+	.fill {
+		width: 100%;
+		height: 100%;
 	}
 </style>

@@ -65,6 +65,7 @@
 	$: $grid_locked ? set_fixed_to(false) : set_fixed_to(true);
 </script>
 
+
 <div class="grid">
 	<Grid bind:items cols={width_to_cols} rowHeight={90} gap={[5, 5]} let:dataItem>
 		<Widget child_component={dataItem.data.widget} name={dataItem.data.name} />

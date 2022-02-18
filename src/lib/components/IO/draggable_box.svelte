@@ -3,7 +3,7 @@
 	import DragComponent from './drag_component.svelte';
 	export let drag_data: drop_data;
 
-	function keypress(event: MouseEvent) {
+	function keypress() {
 		navigator.clipboard.writeText(drag_data.text);
 	}
 </script>

@@ -29,3 +29,9 @@ import { calculate_molar_mass } from '$lib/utils/chem/molecular_formular/molar_m
 		</button>
 	</LockDrag>
 </div>
+
+<style>
+	p {
+		margin-top: 0px;
+	}
+</style>
