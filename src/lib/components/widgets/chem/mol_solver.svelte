@@ -3,10 +3,18 @@
 	import InputBox from '$lib/components/IO/input_box.svelte';
 	import LockDrag from '$lib/components/IO/lock_drag.svelte';
 	import { mol_symbol_type, solve_for_mol } from '$lib/utils/chem/mol/solve_for_mol';
-	import { drop_data, get_by_priority, optional_drop_data } from '$lib/utils/drag';
+	import {
+		drop_data,
+		get_by_priority,
+		optional_drop_data,
+		require_optional_drop_data
+	} from '$lib/utils/drag';
 	import { set_empty, typed_entries, typed_keys } from '$lib/utils/general';
 
-	let data: drop_data = { text: '', optional: { mol_attributes: {} } };
+	let data: require_optional_drop_data<'mol_attributes'> = {
+		text: '',
+		optional: { mol_attributes: {} }
+	};
 
 	const values: Record<mol_symbol_type, drop_data> = {
 		n: { text: '', optional: {} },

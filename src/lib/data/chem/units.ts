@@ -175,7 +175,7 @@ export const units = {
 			inherits: 'ancient'
 		}
 	},
-	dimensions: {
+	defenitions: {
 		time: {
 			name: 'time',
 			otherNames: ['duration'],
@@ -5237,6 +5237,3 @@ export const units = {
 } as const;
 
 
-type units_options = (typeof units)['dimensions'][keyof (typeof units)['dimensions']]
-type units_map = units_options['']
-type unit_union = Array<unit> 

@@ -1,4 +1,4 @@
-import { typed_entries, typed_from_entries } from '$lib/utils/general';
+import { typed_entries, typed_from_entries } from '../../general';
 import { elements } from '../../../data/chem/elements';
 import type { element_symbol } from '../types';
 import molecular_formular_to_string from './to_string';

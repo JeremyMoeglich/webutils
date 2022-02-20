@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Widget from '$lib/components/widget.svelte';
 	import { grid_locked } from '$lib/stores';
-import { typed_entries } from '$lib/utils/general';
+	import { typed_entries } from '$lib/utils/general';
 	import { widgets } from '$lib/widgets';
 	import Grid from 'svelte-grid';
 	import gridHelp from 'svelte-grid/build/helper/index.mjs';
@@ -65,7 +65,6 @@ import { typed_entries } from '$lib/utils/general';
 
 	$: $grid_locked ? set_fixed_to(false) : set_fixed_to(true);
 </script>
-
 
 <div class="grid">
 	<Grid bind:items cols={width_to_cols} rowHeight={90} gap={[5, 5]} let:dataItem>

@@ -3541,4 +3541,4 @@ export const elements: ReadonlyArray<element> = [
 		NumberofShells: 7,
 		NumberofValence: 8
 	}
-];
+] as const;

@@ -25,17 +25,18 @@
 			const search_result = search_molecular_form(data.text);
 			values = search_result.map((match) => {
 				const molecular_formular = parse_molecular_formular(match.molecular_form_string);
-				let molecular_drop_data: drop_data;
-				if (!(molecular_formular instanceof Error)) {
-					let molar_mass = calculate_molar_mass(molecular_formular);
-					if (molar_mass instanceof Error) {
-						molar_mass = 0;
-					}
-					molecular_drop_data = {
-						optional: { molecular_formular: molecular_formular, number: molar_mass },
-						text: match.molecular_form_string
-					};
+				if (molecular_formular instanceof Error) {
+					throw molecular_formular;
 				}
+				let molar_mass = calculate_molar_mass(molecular_formular);
+				if (molar_mass instanceof Error) {
+					throw molar_mass;
+				}
+				const molecular_drop_data: drop_data = {
+					optional: { molecular_formular: molecular_formular, number: molar_mass },
+					text: match.molecular_form_string
+				};
+
 				if (match.name === match.molecular_form_string) {
 					const real_name_drop_data: drop_data = { text: match.real_name, optional: {} };
 					return {
